@@ -4,6 +4,7 @@ import {
   deleteBook,
 } from '../../../api_helpers/controllers/books_controller';
 
+// updata and delete ============>
 export default async function handeler(req, res) {
   await connectDB().catch((error) => console.log('connection faild'));
   if (req.method === 'PUT') {
