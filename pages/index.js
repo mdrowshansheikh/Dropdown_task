@@ -1,7 +1,18 @@
 import React from 'react';
+import { getFeaturedBook } from '../api_helpers/frontend/utils';
+import BookList from '../components/BookList';
 
-const index = () => {
-  return <div>index</div>;
+const Home = ({ books }) => {
+  return <BookList data={books}></BookList>;
 };
+export default Home;
 
-export default index;
+export const getStaticProps = async () => {
+  const books = await getFeaturedBook();
+
+  return {
+    props: {
+      books,
+    },
+  };
+};

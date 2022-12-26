@@ -98,3 +98,19 @@ export const deleteBook = async (req, res) => {
   }
   res.status(200).json({ message: 'Deleted Successfully' });
 };
+
+// Get Book by Id ==================>
+
+export const getBookById = async (req, res) => {
+  const id = req.query.id;
+  let book;
+  try {
+    book = await Book.findById(id);
+  } catch (error) {
+    return new Error(error);
+  }
+  if (!book) {
+    res.status(404).json({ message: 'No book found from given id' });
+  }
+  res.status(200).json({ book });
+};
